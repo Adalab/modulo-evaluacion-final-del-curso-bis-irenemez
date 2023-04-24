@@ -6,6 +6,9 @@ import ItemRecipe from './ItemRecipe';
 import ListRecipe from './ListRecipe';
 import Filter from './Filter';
 import DetailRecipe from './DetailRecipe';
+import ls from '../services/localStorage';
+// falta leer los datos del local storage y pasárselos a la función useState para que el estado tenga estos valores al arrancar la página
+// falta guardar los datos en el local storage en un useEffect para que después de cambiar el local storage esté actualizado
 
 function App() {
 const [searchRecipe, setSearchRecipe] = useState('');
@@ -28,7 +31,8 @@ const [listRecipe, setListRecipe] = useState([]);
 
 
 const findElement = (elementId)=> {
-  const foundElement = listRecipe.find((eachElement)=> eachElement === elementId)
+  const foundElement = listRecipe.find((eachElement)=> eachElement.id === parseInt(elementId))
+  console.log(foundElement);
   return foundElement;
 }
 
